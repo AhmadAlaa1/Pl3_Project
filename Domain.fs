@@ -30,3 +30,17 @@
 //  type AppState = {
 //  Students : Student list
 //  }
+
+
+//!GradeClac Test
+module Domain
+
+type Grade = {
+    Score : float
+}
+
+type Student = {
+    Name : string
+    Grades : Grade list
+    IsPassing : bool
+}
