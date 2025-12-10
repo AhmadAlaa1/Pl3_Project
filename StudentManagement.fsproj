@@ -1,13 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>WinExe</OutputType> <!-- بدل Exe عشان Forms -->
+    <TargetFramework>net8.0-windows</TargetFramework> <!-- نسخة حديثة ومستقرة -->
+    <UseWindowsForms>true</UseWindowsForms> <!-- مهم جداً -->
   </PropertyGroup>
+
   <ItemGroup>
-    <Compile Include="Src/Domain.fs" />
-    <Compile Include="Src/Validation.fs" />
-    <Compile Include="Src/JsonSerializer.fs" />
-    <Compile Include="Src/Services.fs" />
+    <PackageReference Include="HIC.System.Windows.Forms.DataVisualization" Version="1.0.1" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.0" />
+    <PackageReference Include="Dapper" Version="2.1.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="StatusTypes.fs" />
+    <Compile Include="Domain.fs" />
+    <Compile Include="Validation.fs" />
+    <Compile Include="DatabaseAccess.fs" />
+    <Compile Include="Statistics.fs" />
+    <Compile Include="StudentService.fs" />
+    <Compile Include="AuthService.fs" />
+    <Compile Include="AccessControl.fs" />
+    <!-- <Compile Include="Ui.fs" /> -->
+    <Compile Include="StatisticsForm.fs" />
+    <Compile Include="ViewerDashboardForm.fs" />
+    <Compile Include="DatabaseViewerForm.fs" />
+    <Compile Include="AdminDashboardForm.fs" />
+    <Compile Include="RegisterForm.fs" /> 
+    <Compile Include="LoginForm.fs" /> 
     <Compile Include="Program.fs" />
   </ItemGroup>
+
 </Project>

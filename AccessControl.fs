@@ -1,3 +1,5 @@
+namespace StudentManagement
+
 // Momen Ahmed
 
 // Example Code:
