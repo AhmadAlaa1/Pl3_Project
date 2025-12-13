@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<linker>
+  <assembly fullname="StudentManagement.Tests">
+    <resource name="FSharpSignatureData.StudentManagement.Tests" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedData.StudentManagement.Tests" action="remove"></resource>
+    <resource name="FSharpSignatureDataB.StudentManagement.Tests" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedDataB.StudentManagement.Tests" action="remove"></resource>
+    <resource name="FSharpOptimizationData.StudentManagement.Tests" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedData.StudentManagement.Tests" action="remove"></resource>
+    <resource name="FSharpOptimizationDataB.StudentManagement.Tests" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedDataB.StudentManagement.Tests" action="remove"></resource>
+    <resource name="FSharpOptimizationInfo.StudentManagement.Tests" action="remove"></resource>
+    <resource name="FSharpSignatureInfo.StudentManagement.Tests" action="remove"></resource>
+  </assembly>
+</linker>

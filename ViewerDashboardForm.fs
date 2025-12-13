@@ -7,24 +7,28 @@ open StudentManagement
 open StudentManagement.StatusTypes
 
 type ViewerDashboardForm() as this =
-    inherit Form(Text = "Viewer Dashboard", Width = 800, Height = 600, StartPosition = FormStartPosition.CenterScreen)
-
-    // Buttons Panel
-    let panelButtons = new FlowLayoutPanel(Dock = DockStyle.Left, Width = 200, FlowDirection = FlowDirection.TopDown, Padding = Padding(10))
-
-    // Main Panel
+    inherit Form(
+        Text = "Viewer Dashboard",
+        Width = Screen.PrimaryScreen.WorkingArea.Width,
+        Height = Screen.PrimaryScreen.WorkingArea.Height,
+        StartPosition = FormStartPosition.Manual,  // مهم علشان نحدد الـ bounds
+        Left = 0,
+        Top = 0
+    )
+    // تعريف الـ controls فقط
+    let panel = new Panel(Dock = DockStyle.Left, Width = 200)
     let panelMain = new Panel(Dock = DockStyle.Fill)
 
-    // Buttons
-    let btnViewAll = new Button(Text = "View All Students", Width = 180, Height = 40)
-    let btnViewById = new Button(Text = "View Student by ID", Width = 180, Height = 40)
-    let btnStats = new Button(Text = "View Statistics", Width = 180, Height = 40)
-    let btnLogout = new Button(Text = "Logout", Width = 180, Height = 40)
+    let btnViewAll = new Button(Text="View All Students", Top=10, Left=10, Width=180, Height=40)
+    let btnViewById = new Button(Text="View Student by ID", Top=60, Left=10, Width=180, Height=40)
+    let btnViewStudentStats = new Button(Text="View Student Stats", Top=110, Left=10, Width=180, Height=40)
+    let btnStats = new Button(Text="View Statistics", Top=160, Left=10, Width=180, Height=40)
+    let btnLogout = new Button(Text="Logout", Top=210, Left=10, Width=180, Height=40)
 
+    // كل الكود اللي ينفذ فور إنشاء الفورم يحطه داخل do block
     do
-        panelButtons.Controls.AddRange [| btnViewAll; btnViewById; btnStats; btnLogout |]
-        this.Controls.Add(panelMain)
-        this.Controls.Add(panelButtons)
+        panel.Controls.AddRange([| btnViewAll; btnViewById; btnViewStudentStats; btnStats; btnLogout |])
+        this.Controls.AddRange([| panelMain; panel |])
 
         // ================================
         // View all students
@@ -102,6 +106,35 @@ type ViewerDashboardForm() as this =
                         ) |> ignore
 
         )
+
+             // View Statistics for a Student
+        btnViewStudentStats.Click.Add(fun _ ->
+            let input = Microsoft.VisualBasic.Interaction.InputBox("Enter Student ID:", "View Student Stats")
+            let ok, id = System.Int32.TryParse input
+            if not ok then
+                let code = StatusCode.BadRequest
+                MessageBox.Show(
+                    sprintf "[%d] Please enter a valid ID." (int code),
+                    "Validation Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                ) |> ignore
+            else
+                match StudentService.getStudentDetailsById id with
+                | Ok student ->
+                    // تمرير الطالب + حد النجاح للفورم
+                    let statsForm = new StudentStatsForm(student, 50.0)
+                    statsForm.ShowDialog() |> ignore
+                | Error e ->
+                    let code = toCode e
+                    MessageBox.Show(
+                        sprintf "[%d] %s" (int code) (toMsg e),
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    ) |> ignore
+        )
+
 
         // ================================
         // View Statistics

@@ -15,6 +15,7 @@
   <ItemGroup>
     <Compile Include="StatusTypes.fs" />
     <Compile Include="Domain.fs" />
+    <Compile Include="GradeCalc.fs" />   
     <Compile Include="Validation.fs" />
     <Compile Include="DatabaseAccess.fs" />
     <Compile Include="Statistics.fs" />
@@ -22,6 +23,7 @@
     <Compile Include="AuthService.fs" />
     <Compile Include="AccessControl.fs" />
     <!-- <Compile Include="Ui.fs" /> -->
+    <Compile Include="StudentStatsForm.fs" /> 
     <Compile Include="StatisticsForm.fs" />
     <Compile Include="ViewerDashboardForm.fs" />
     <Compile Include="DatabaseViewerForm.fs" />

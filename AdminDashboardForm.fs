@@ -6,8 +6,15 @@ open StudentManagement
 open StudentManagement.StatusTypes
 
 type AdminDashboardForm() as this =
-    inherit Form(Text = "Admin Dashboard", Width = 1000, Height = 600, StartPosition = FormStartPosition.CenterScreen)
-
+    inherit Form(
+        Text = "Admin Dashboard",
+        Width = Screen.PrimaryScreen.WorkingArea.Width,
+        Height = Screen.PrimaryScreen.WorkingArea.Height,
+        StartPosition = FormStartPosition.Manual,  // مهم علشان نحدد الـ bounds
+        Left = 0,
+        Top = 0
+    )
+    
     // --- Controls ---
     let dgvStudents = new DataGridView(Dock=DockStyle.Fill, ReadOnly=true, AutoSizeColumnsMode=DataGridViewAutoSizeColumnsMode.Fill)
 
@@ -19,6 +26,7 @@ type AdminDashboardForm() as this =
     let btnAddGrade = new Button(Text="Add Grade", Top=210, Left=10, Width=150)
     let btnUpdateGrade = new Button(Text="Update Grade", Top=250, Left=10, Width=150)
     let btnRemoveGrade = new Button(Text="Remove Grade", Top=290, Left=10, Width=150)
+    let btnViewStudentStats = new Button(Text="View Student Stats", Top=410, Left=10, Width=150)
     let btnViewStats = new Button(Text="View Statistics", Top=330, Left=10, Width=150)
     let btnViewTables = new Button(Text="View Database Tables", Top=370, Left=10, Width=150)
     let btnLogout = new Button(Text="Logout", Top=510, Left=10, Width=150)
@@ -29,7 +37,7 @@ type AdminDashboardForm() as this =
         // Add buttons to panel
         panel.Controls.AddRange([|
             btnViewAll; btnViewById; btnAddStudent; btnEditStudent; btnDeleteStudent;
-            btnAddGrade; btnUpdateGrade; btnRemoveGrade; btnViewStats; btnViewTables; btnLogout
+            btnAddGrade; btnUpdateGrade; btnRemoveGrade; btnViewStudentStats; btnViewStats; btnViewTables; btnLogout
         |])
         // Add panel and DataGridView to Form
         this.Controls.AddRange([| dgvStudents; panel |])
@@ -290,13 +298,42 @@ type AdminDashboardForm() as this =
                     ) |> ignore
         )
 
+        // View Statistics for a Student
+        btnViewStudentStats.Click.Add(fun _ ->
+            let input = Microsoft.VisualBasic.Interaction.InputBox("Enter Student ID:", "View Student Stats")
+            let ok, id = System.Int32.TryParse input
+            if not ok then
+                let code = StatusCode.BadRequest
+                MessageBox.Show(
+                    sprintf "[%d] Please enter a valid ID." (int code),
+                    "Validation Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                ) |> ignore
+            else
+                match StudentService.getStudentDetailsById id with
+                | Ok student ->
+                    // تمرير الطالب + حد النجاح للفورم
+                    let statsForm = new StudentStatsForm(student, 50.0)
+                    statsForm.ShowDialog() |> ignore
+                | Error e ->
+                    let code = toCode e
+                    MessageBox.Show(
+                        sprintf "[%d] %s" (int code) (toMsg e),
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    ) |> ignore
+        )
+
+
         // View Statistics
         btnViewStats.Click.Add(fun _ ->
             let panelMain = new Panel(Dock = DockStyle.Fill)
             this.Controls.Add(panelMain)
             panelMain.Controls.Clear()
 
-            let stats = Statistics.classStats 75.0 (StudentService.listAllStudents())
+            let stats = Statistics.classStats 50.0 (StudentService.listAllStudents())
             let statsForm = new StatisticsForm(stats)
             statsForm.ShowDialog() |> ignore
         )

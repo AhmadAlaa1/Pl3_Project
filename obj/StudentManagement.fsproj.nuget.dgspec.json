@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Pl3_Project\\StudentManagement.fsproj": {}
+    "D:\\Web\\Pl3_Project\\StudentManagement.fsproj": {}
   },
   "projects": {
-    "D:\\Pl3_Project\\StudentManagement.fsproj": {
+    "D:\\Web\\Pl3_Project\\StudentManagement.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Pl3_Project\\StudentManagement.fsproj",
+        "projectUniqueName": "D:\\Web\\Pl3_Project\\StudentManagement.fsproj",
         "projectName": "StudentManagement",
-        "projectPath": "D:\\Pl3_Project\\StudentManagement.fsproj",
+        "projectPath": "D:\\Web\\Pl3_Project\\StudentManagement.fsproj",
         "packagesPath": "C:\\Users\\youoi\\.nuget\\packages\\",
-        "outputPath": "D:\\Pl3_Project\\obj\\",
+        "outputPath": "D:\\Web\\Pl3_Project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\youoi\\AppData\\Roaming\\NuGet\\NuGet.Config",

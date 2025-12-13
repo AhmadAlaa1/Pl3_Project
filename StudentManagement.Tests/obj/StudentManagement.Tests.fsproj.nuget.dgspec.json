@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hp\\Downloads\\Pl3_Project-main\\Pl3_Project-main\\StudentManagement.Tests\\StudentManagement.Tests.fsproj": {}
+    "D:\\Web\\Pl3_Project\\StudentManagement.Tests\\StudentManagement.Tests.fsproj": {}
   },
   "projects": {
-    "C:\\Users\\hp\\Downloads\\Pl3_Project-main\\Pl3_Project-main\\StudentManagement.fsproj": {
+    "D:\\Web\\Pl3_Project\\StudentManagement.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\Downloads\\Pl3_Project-main\\Pl3_Project-main\\StudentManagement.fsproj",
+        "projectUniqueName": "D:\\Web\\Pl3_Project\\StudentManagement.fsproj",
         "projectName": "StudentManagement",
-        "projectPath": "C:\\Users\\hp\\Downloads\\Pl3_Project-main\\Pl3_Project-main\\StudentManagement.fsproj",
-        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\Downloads\\Pl3_Project-main\\Pl3_Project-main\\obj\\",
+        "projectPath": "D:\\Web\\Pl3_Project\\StudentManagement.fsproj",
+        "packagesPath": "C:\\Users\\youoi\\.nuget\\packages\\",
+        "outputPath": "D:\\Web\\Pl3_Project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\youoi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\sdk\\9.0.308\\FSharp\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\10.0.100\\FSharp\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -36,7 +36,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -50,7 +50,7 @@
             "FSharp.Core": {
               "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
               "target": "Package",
-              "version": "[9.0.303, )",
+              "version": "[10.0.100, )",
               "generatePathProperty": true
             },
             "HIC.System.Windows.Forms.DataVisualization": {
@@ -101,21 +101,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\hp\\Downloads\\Pl3_Project-main\\Pl3_Project-main\\StudentManagement.Tests\\StudentManagement.Tests.fsproj": {
+    "D:\\Web\\Pl3_Project\\StudentManagement.Tests\\StudentManagement.Tests.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\Downloads\\Pl3_Project-main\\Pl3_Project-main\\StudentManagement.Tests\\StudentManagement.Tests.fsproj",
+        "projectUniqueName": "D:\\Web\\Pl3_Project\\StudentManagement.Tests\\StudentManagement.Tests.fsproj",
         "projectName": "StudentManagement.Tests",
-        "projectPath": "C:\\Users\\hp\\Downloads\\Pl3_Project-main\\Pl3_Project-main\\StudentManagement.Tests\\StudentManagement.Tests.fsproj",
-        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\Downloads\\Pl3_Project-main\\Pl3_Project-main\\StudentManagement.Tests\\obj\\",
+        "projectPath": "D:\\Web\\Pl3_Project\\StudentManagement.Tests\\StudentManagement.Tests.fsproj",
+        "packagesPath": "C:\\Users\\youoi\\.nuget\\packages\\",
+        "outputPath": "D:\\Web\\Pl3_Project\\StudentManagement.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\youoi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -123,15 +123,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\sdk\\9.0.308\\FSharp\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\10.0.100\\FSharp\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\hp\\Downloads\\Pl3_Project-main\\Pl3_Project-main\\StudentManagement.fsproj": {
-                "projectPath": "C:\\Users\\hp\\Downloads\\Pl3_Project-main\\Pl3_Project-main\\StudentManagement.fsproj"
+              "D:\\Web\\Pl3_Project\\StudentManagement.fsproj": {
+                "projectPath": "D:\\Web\\Pl3_Project\\StudentManagement.fsproj"
               }
             }
           }
@@ -141,7 +141,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -150,7 +150,7 @@
             "FSharp.Core": {
               "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
               "target": "Package",
-              "version": "[9.0.303, )",
+              "version": "[10.0.100, )",
               "generatePathProperty": true
             },
             "Microsoft.NET.Test.Sdk": {
@@ -204,7 +204,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

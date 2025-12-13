@@ -25,18 +25,28 @@ type User = {
     Role: UserRole
 }
 
+type Grade = { 
+    Subject: string; 
+    Score: float 
+}
+
 type AuthState = {
     CurrentUser: User option
     IsLoggedIn: bool
 }
 
+// type ClassStats = {
+//     StudentCount: int
+//     HighestAvg: float option
+//     LowestAvg: float option
+//     PassRate: float option
+// }
 type ClassStats = {
-    StudentCount: int
-    HighestAvg: float option
-    LowestAvg: float option
-    PassRate: float option
+    StudentCount : int
+    HighestStudent : (int * string * float) option
+    LowestStudent  : (int * string * float) option
+    PassRate : float option
 }
-
 
 // type Result<'T> =
 //     | Ok of 'T
