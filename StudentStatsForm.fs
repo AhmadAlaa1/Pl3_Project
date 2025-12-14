@@ -13,16 +13,13 @@ type StudentStatsForm(student: Student, passThreshold: float) as this =
         let panelMain = new FlowLayoutPanel(Dock = DockStyle.Fill, AutoScroll = true, Padding = Padding(20))
         this.Controls.Add(panelMain)
 
-        // متوسط الطالب
         let avgText =
             match GradeCalc.averageScore student.Grades with
             | Some avg -> sprintf "%.2f" avg
             | None -> "N/A"
 
-        // حالة النجاح/الرسوب
         let statusText = GradeCalc.studentStatus passThreshold student
 
-        // درجات الطالب
         let gradesText =
             if student.Grades.IsEmpty then "No grades"
             else

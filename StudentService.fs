@@ -7,7 +7,7 @@ module StudentService =
     let private getAllStudents () =
         match DatabaseAccess.getAllStudents() with
         | Ok students -> students
-        | Error msg -> []  // ممكن نضيف Logging هنا لو عايز
+        | Error msg -> []  
 
     let createStudent (id: int) (name: string) (email: string) : Result<string, StatusError> =
         let students = getAllStudents()

@@ -63,7 +63,6 @@ module DatabaseAccess =
         cmd.CommandText <- createGradesTable
         cmd.ExecuteNonQuery() |> ignore
 
-        // إضافة Admin افتراضي إذا لم يكن موجوداً
         use checkCmd = connection.CreateCommand()
         checkCmd.CommandText <- "SELECT COUNT(*) FROM Admins WHERE Name = 'admin'"
         let count = Convert.ToInt32(checkCmd.ExecuteScalar())
@@ -246,7 +245,6 @@ module DatabaseAccess =
         with
         | ex -> Error ex.Message
 
-    // ========== ADMINS ==========
     let addAdmin (name: string) (password: string) (email: string) : Result<unit, string> =
         try
             use connection = new SqliteConnection(connectionString)
@@ -297,7 +295,6 @@ module DatabaseAccess =
         with
         | ex -> Error ex.Message
 
-    // ========== VIEWERS ==========
     let addViewer (name: string) (password: string) (email: string) : Result<unit, string> =
         try
             use connection = new SqliteConnection(connectionString)
@@ -353,7 +350,6 @@ module DatabaseAccess =
             use connection = new SqliteConnection(connectionString)
             connection.Open()
 
-            // عرض جدول الطلاب
             printfn "\n========== STUDENTS TABLE =========="
             use cmd = connection.CreateCommand()
             cmd.CommandText <- "SELECT Id, Name, Email FROM Students ORDER BY Id"
@@ -370,7 +366,6 @@ module DatabaseAccess =
                     let email = reader.GetString(2)
                     printfn "%-5d %-20s %-30s" id name email
 
-            // عرض جدول الدرجات
             printfn "\n========== GRADES TABLE =========="
             use gradeCmd = connection.CreateCommand()
             gradeCmd.CommandText <- "SELECT StudentId, Subject, Grade FROM Grades ORDER BY StudentId, Subject"
@@ -387,7 +382,6 @@ module DatabaseAccess =
                     let grade = gradeReader.GetDouble(2)
                     printfn "%-10d %-20s %-10.2f" studentId subject grade
 
-            // عرض جدول الـ Admins
             printfn "\n========== ADMINS TABLE =========="
             use adminCmd = connection.CreateCommand()
             adminCmd.CommandText <- "SELECT Name, Password, Email, CreatedDate FROM Admins ORDER BY Id"
@@ -405,7 +399,6 @@ module DatabaseAccess =
                     let created = adminReader.GetString(3)
                     printfn "%-20s %-15s %-30s %-20s" name password email created
 
-            // عرض جدول الـ Viewers
             printfn "\n========== VIEWERS TABLE =========="
             use viewerCmd = connection.CreateCommand()
             viewerCmd.CommandText <- "SELECT Name, Password, Email, CreatedDate FROM Viewers ORDER BY Id"

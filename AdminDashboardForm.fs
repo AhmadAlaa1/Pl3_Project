@@ -15,7 +15,6 @@ type AdminDashboardForm() as this =
         Top = 0
     )
     
-    // --- Controls ---
     let dgvStudents = new DataGridView(Dock=DockStyle.Fill, ReadOnly=true, AutoSizeColumnsMode=DataGridViewAutoSizeColumnsMode.Fill)
 
     let btnViewAll = new Button(Text="View All Students", Top=10, Left=10, Width=150)
@@ -34,15 +33,12 @@ type AdminDashboardForm() as this =
     let panel = new Panel(Dock=DockStyle.Left, Width=180)
     
     do
-        // Add buttons to panel
         panel.Controls.AddRange([|
             btnViewAll; btnViewById; btnAddStudent; btnEditStudent; btnDeleteStudent;
             btnAddGrade; btnUpdateGrade; btnRemoveGrade; btnViewStudentStats; btnViewStats; btnViewTables; btnLogout
         |])
-        // Add panel and DataGridView to Form
         this.Controls.AddRange([| dgvStudents; panel |])
 
-        // --- Event Handlers ---
 
         // View all students
         btnViewAll.Click.Add(fun _ ->

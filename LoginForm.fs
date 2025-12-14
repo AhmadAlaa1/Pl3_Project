@@ -15,7 +15,6 @@ type LoginForm() as this =
             StartPosition = FormStartPosition.CenterScreen
         )
 
-    // --- Controls ---
     let lblUsername = new Label(Text = "Username:", Top = 20, Left = 20, Width = 100)
     let txtUsername = new TextBox(Top = 40, Left = 20, Width = 280)
 
@@ -28,12 +27,10 @@ type LoginForm() as this =
     do
         this.Controls.AddRange([| lblUsername; txtUsername; lblPassword; txtPassword; btnLogin; btnRegister |])
 
-        // --- Event Handlers ---
         btnLogin.Click.Add(fun _ ->
             let username = txtUsername.Text.Trim()
             let password = txtPassword.Text.Trim()
 
-            // التحقق من الحقول الفارغة
             if String.IsNullOrWhiteSpace username then
                 let code = StatusTypes.StatusCode.BadRequest
                 MessageBox.Show(sprintf "[%d] Username is required" (int code),
@@ -47,10 +44,8 @@ type LoginForm() as this =
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning) |> ignore
             else
-                // محاولة تسجيل الدخول
                 match AuthService.login username password with
                 | Ok user ->
-                    // تسجيل دخول ناجح
                     MessageBox.Show(sprintf "[%d] Login successful!" (int StatusTypes.StatusCode.OK),
                                     "Success",
                                     MessageBoxButtons.OK,
@@ -68,7 +63,6 @@ type LoginForm() as this =
                         this.Show()
 
                 | Error err ->
-                    // تحويل StatusError للرسالة والكود
                     let code = StatusTypes.StatusCode.Unauthorized
                     let msg = StatusTypes.toMsg err
                     MessageBox.Show(sprintf "[%d] %s" (int code) msg,

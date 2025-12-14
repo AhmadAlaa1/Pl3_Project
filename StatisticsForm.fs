@@ -8,7 +8,6 @@ type StatisticsForm(stats: ClassStats) as this =
     inherit Form(Text = "Class Statistics", Width = 600, Height = 400)
 
     do
-        // Main Panel
         let panelMain =
             new FlowLayoutPanel(
                 Dock = DockStyle.Fill,
@@ -19,7 +18,6 @@ type StatisticsForm(stats: ClassStats) as this =
 
         this.Controls.Add(panelMain)
 
-        // Helper to format student option
         let formatStudentOpt (studentOpt: (int * string * float) option) =
             match studentOpt with
             | Some (id, name, avg) ->
@@ -32,7 +30,6 @@ type StatisticsForm(stats: ClassStats) as this =
             | Some v -> sprintf "%.2f%%" (v * 100.0)
             | None -> "N/A"
 
-        // Main Label
         let lblInfo =
             new Label(
                 AutoSize = true,

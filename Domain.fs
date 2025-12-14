@@ -1,6 +1,5 @@
 ﻿namespace StudentManagement
 
-// ========== DOMAIN TYPES ==========
 type Student = {
     Id: int
     Name: string
@@ -12,11 +11,10 @@ type OperationResult =
     | Success
     | Failure of string list
 
-// نوع المستخدم
 type UserRole =
     | Admin
     | StudentUser of int
-    | Viewer of int  // Viewer يحمل ID الـ Viewer
+    | Viewer of int  
 
 type User = {
     Id: int
@@ -35,19 +33,9 @@ type AuthState = {
     IsLoggedIn: bool
 }
 
-// type ClassStats = {
-//     StudentCount: int
-//     HighestAvg: float option
-//     LowestAvg: float option
-//     PassRate: float option
-// }
 type ClassStats = {
     StudentCount : int
     HighestStudent : (int * string * float) option
     LowestStudent  : (int * string * float) option
     PassRate : float option
 }
-
-// type Result<'T> =
-//     | Ok of 'T
-//     | Error of int * string  // int = status code, string = message

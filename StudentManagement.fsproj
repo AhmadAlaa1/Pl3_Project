@@ -21,8 +21,7 @@
     <Compile Include="Statistics.fs" />
     <Compile Include="StudentService.fs" />
     <Compile Include="AuthService.fs" />
-    <Compile Include="AccessControl.fs" />
-    <!-- <Compile Include="Ui.fs" /> -->
+    
     <Compile Include="StudentStatsForm.fs" /> 
     <Compile Include="StatisticsForm.fs" />
     <Compile Include="ViewerDashboardForm.fs" />

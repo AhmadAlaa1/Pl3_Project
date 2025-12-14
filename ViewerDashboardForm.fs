@@ -11,11 +11,11 @@ type ViewerDashboardForm() as this =
         Text = "Viewer Dashboard",
         Width = Screen.PrimaryScreen.WorkingArea.Width,
         Height = Screen.PrimaryScreen.WorkingArea.Height,
-        StartPosition = FormStartPosition.Manual,  // مهم علشان نحدد الـ bounds
+        StartPosition = FormStartPosition.Manual, 
         Left = 0,
         Top = 0
     )
-    // تعريف الـ controls فقط
+
     let panel = new Panel(Dock = DockStyle.Left, Width = 200)
     let panelMain = new Panel(Dock = DockStyle.Fill)
 
@@ -25,7 +25,6 @@ type ViewerDashboardForm() as this =
     let btnStats = new Button(Text="View Statistics", Top=160, Left=10, Width=180, Height=40)
     let btnLogout = new Button(Text="Logout", Top=210, Left=10, Width=180, Height=40)
 
-    // كل الكود اللي ينفذ فور إنشاء الفورم يحطه داخل do block
     do
         panel.Controls.AddRange([| btnViewAll; btnViewById; btnViewStudentStats; btnStats; btnLogout |])
         this.Controls.AddRange([| panelMain; panel |])
@@ -107,7 +106,9 @@ type ViewerDashboardForm() as this =
 
         )
 
-             // View Statistics for a Student
+
+        // ================================
+        // View Statistics for a Student
         btnViewStudentStats.Click.Add(fun _ ->
             let input = Microsoft.VisualBasic.Interaction.InputBox("Enter Student ID:", "View Student Stats")
             let ok, id = System.Int32.TryParse input
@@ -122,7 +123,6 @@ type ViewerDashboardForm() as this =
             else
                 match StudentService.getStudentDetailsById id with
                 | Ok student ->
-                    // تمرير الطالب + حد النجاح للفورم
                     let statsForm = new StudentStatsForm(student, 50.0)
                     statsForm.ShowDialog() |> ignore
                 | Error e ->

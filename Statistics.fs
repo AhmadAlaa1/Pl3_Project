@@ -2,7 +2,6 @@ namespace StudentManagement
 
 module Statistics =
 
-    /// Calculate average grade for a student
     let studentAverage (student: Student) : float option =
         if student.Grades.IsEmpty then None
         else
@@ -11,7 +10,6 @@ module Statistics =
             |> Seq.average
             |> Some
 
-    /// Check if a student is passing based on threshold
     let isPassing (passThreshold: float) (grades: Map<string, float>) : bool =
         if grades.IsEmpty then false
         else
@@ -21,10 +19,8 @@ module Statistics =
                 |> Seq.average
             avg >= passThreshold
 
-    /// Calculate class-wide statistics
     let classStats (passThreshold: float) (students: Student list) : ClassStats =
 
-        // (Id, Name, Average)
         let studentAvgs =
             students
             |> List.choose (fun s ->

@@ -12,7 +12,6 @@ type RegisterForm() as this =
                  MaximizeBox = false,
                  StartPosition = FormStartPosition.CenterScreen)
 
-    // Controls
     let lblName = new Label(Text="Name:", Top=20, Left=20, Width=100)
     let txtName = new TextBox(Top=40, Left=20, Width=280)
 
@@ -33,7 +32,6 @@ type RegisterForm() as this =
             let email = txtEmail.Text.Trim()
             let password = txtPassword.Text.Trim()
 
-            // --- التحقق من الحقول الفارغة ---
             if String.IsNullOrWhiteSpace name then
                 let code = StatusTypes.StatusCode.BadRequest
                 MessageBox.Show(sprintf "[%d] Name is required" (int code),
@@ -53,7 +51,6 @@ type RegisterForm() as this =
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning) |> ignore
             else
-                // محاولة التسجيل
                 match AuthService.registerViewer name email password with
                 | Ok _ ->
                     MessageBox.Show(sprintf "[%d] Registration successful!" (int StatusTypes.StatusCode.Created),
